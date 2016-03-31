@@ -1,2 +1,3 @@
 # Material-Food
-Material Food is a GPL Wordpress Theme made by Mohole students
+Material Food is a GPL Wordpress Theme made by Mohole students<br>
+Version 1.0
