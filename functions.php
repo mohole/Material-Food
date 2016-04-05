@@ -1,6 +1,6 @@
 <?php
 if ( ! isset( $content_width ) ) {
-    $content_width = 900;   
+    $content_width = 900;
 }
 
 //navwalker per aggiungere le classi MDL al menu
@@ -10,20 +10,20 @@ require_once('nav-walker.php');
 function temaSetup(){
     //aggiungere  RSS feed links in testata
 	add_theme_support( 'automatic-feed-links' );
-    
+
     //nome del blog
     add_theme_support( 'title-tag' );
-    
+
     //immagine in evidenza
     add_theme_support( 'post-thumbnails' );
-    
+
     //immagine header personalizzata
     add_theme_support( 'custom-header', array(
         'default-image' => get_template_directory_uri() . '/bg.jpg',
         'uploads' => true
-        
+
     ) );
-    
+
     //switch dei commenti in html
     add_theme_support( 'html5', array(
         'search-form',
@@ -32,7 +32,7 @@ function temaSetup(){
         'gallery',
         'caption'
     ) );
-    
+
     //abilitare i formati nel tema
     add_theme_support( 'post-formats', array(
 		'aside',
@@ -87,7 +87,7 @@ function areaWidget(){
         "before_title" => '<h1 class="mdl-mega-footer__heading">',
         "after_title" => '</h1>'
     ) );
-    
+
     //Post category home
     register_sidebars(4, array(
         'name' => 'Home post %d',
@@ -135,7 +135,7 @@ function caricaScript(){
         '1.0.0',
         true
     );
-    
+
     //definisco material.css
     wp_register_style(
         'materialCSS',
@@ -152,7 +152,7 @@ function caricaScript(){
         '2.0.0',
         'all'
     );
-    
+
     //caricamento degli script e degli style
     wp_enqueue_script('jquery');
     wp_enqueue_script('materialJS');
@@ -166,7 +166,7 @@ add_action('wp_enqueue_scripts','caricaScript');
 
 //aggiungere categorie alle immagini
 function aggiungiCategorieImmagini() {
-      register_taxonomy_for_object_type( 'category', 'attachment' );  
+      register_taxonomy_for_object_type( 'category', 'attachment' );
 }
 add_action( 'init' , 'aggiungiCategorieImmagini' );
 
@@ -189,9 +189,9 @@ class UltimiPostCategorizzati extends WP_Widget
     {
         //costruttore di classe
         //parametri: il nome unico del widget, il titolo, array associativo con altre opzioni
-        parent::__construct('cat-posts', __('Ultimi Post Categorizzati','catposts'), array('classname' => 'cat-post-widget', 'description' => __('Post più recenti divisi per categoria','catposts')));
+        parent::__construct('cat-posts', __('Ultimi Post Categorizzati','catposts'), array('classname' => 'cat-post-widget', 'description' => __('Post pi&#249; recenti divisi per categoria','catposts')));
     }
-    
+
     //funzione per definire come visualizzare il form nella configurazione del widget da backend
     public function form( $instance )
     {
@@ -201,13 +201,13 @@ class UltimiPostCategorizzati extends WP_Widget
             'cat'            => '',
             'hide_if_empty'  => ''
         ) );
-        
+
         $title          = $instance['title'];
         $num            = $instance['num'];
         $cat            = $instance['cat'];
         $hide_if_empty  = $instance['hide_if-empty'];
         ?>
-        
+
         <!-- codice html del form -->
         <!-- input text per il titolo -->
         <p>
@@ -239,7 +239,7 @@ class UltimiPostCategorizzati extends WP_Widget
         </p>
         <?php
     }
-    
+
     //elaborazione del widget e output html (nel frontend)
     public function widget( $args,$instance )
     {
@@ -250,21 +250,21 @@ class UltimiPostCategorizzati extends WP_Widget
 			$category_info = get_category($instance["cat"]);
 			$instance["title"] = $category_info->name;
 		}
-        
+
         // array delle info del post
 		$args = array(
             'showposts' => $instance["num"],
 			'cat' => $instance["cat"],
 		);
-        
+
         $cat_posts = new WP_Query( $args );
         if ( !isset ( $instance["hide_if_empty"] ) || $cat_posts->have_posts() ) {
-            
+
             //filtro per la lunghezza dell'excerpt
 			$new_excerpt_length = create_function('$length', "return " . $instance["excerpt_length"] . ";");
 			if ( $instance["excerpt_length"] > 0 )
 				add_filter('excerpt_length', $new_excerpt_length);
-            
+
             echo $before_widget;
 
 			//titolo del widget
@@ -276,8 +276,8 @@ class UltimiPostCategorizzati extends WP_Widget
 					echo $instance["title"];
 				}
 				echo $after_title;
-			} 
-            
+			}
+
             //Elenco dei post
             echo "<ul>\n";
             while ( $cat_posts->have_posts() )
@@ -294,16 +294,16 @@ class UltimiPostCategorizzati extends WP_Widget
                 </li>
            <?php }
             echo "</ul>\n";
-            
+
             echo $after_widget;
-            
+
             remove_filter('excerpt_length', $new_excerpt_length);
-            
+
             // Reimpostazione della variabile global $post
             wp_reset_postdata();
         } //END if
     }// END function
-    
+
     //aggiornamento delle opzioni del widget quando mostrate nel pannello
     public function update( $new_instance, $old_instance )
     {
@@ -337,21 +337,21 @@ add_action( 'customize_register', 'themeslug_theme_customizer' );
 //Social share
 function social_share_menu_item()
 {
-  add_submenu_page("options-general.php", "Social Share", "Social Share", "manage_options", "social-share", "social_share_page"); 
+  add_submenu_page("options-general.php", "Social Share", "Social Share", "manage_options", "social-share", "social_share_page");
 }
 function social_share_page()
 {
    ?>
       <div class="wrap">
          <h1>Social Sharing Options</h1>
- 
+
          <form method="post" action="options.php">
             <?php
                settings_fields("social_share_config_section");
- 
+
                do_settings_sections("social-share");
-                
-               submit_button(); 
+
+               submit_button();
             ?>
          </form>
       </div>
@@ -360,51 +360,51 @@ function social_share_page()
 function social_share_settings()
 {
     add_settings_section("social_share_config_section", "", null, "social-share");
- 
+
     add_settings_field("social-share-facebook", "Do you want to display Facebook share button?", "social_share_facebook_checkbox", "social-share", "social_share_config_section");
     add_settings_field("social-share-twitter", "Do you want to display Twitter share button?", "social_share_twitter_checkbox", "social-share", "social_share_config_section");
     add_settings_field("social-share-linkedin", "Do you want to display LinkedIn share button?", "social_share_linkedin_checkbox", "social-share", "social_share_config_section");
     add_settings_field("social-share-pinterest", "Do you want to display Pinterest share button?", "social_share_pinterest_checkbox", "social-share", "social_share_config_section");
     add_settings_field("social-share-googleplus", "Do you want to display Google+ share button?", "social_share_googleplus_checkbox", "social-share", "social_share_config_section");
-    
+
     register_setting("social_share_config_section", "social-share-facebook");
     register_setting("social_share_config_section", "social-share-twitter");
     register_setting("social_share_config_section", "social-share-linkedin");
     register_setting("social_share_config_section", "social-share-pinterest");
     register_setting("social_share_config_section", "social-share-googleplus");
 }
- 
+
 function social_share_facebook_checkbox()
-{  
+{
    ?>
         <input type="checkbox" name="social-share-facebook" value="1" <?php checked(1, get_option('social-share-facebook'), true); ?> /> Check for Yes
    <?php
 }
 function social_share_twitter_checkbox()
-{  
+{
    ?>
         <input type="checkbox" name="social-share-twitter" value="1" <?php checked(1, get_option('social-share-twitter'), true); ?> /> Check for Yes
    <?php
 }
 function social_share_linkedin_checkbox()
-{  
+{
    ?>
         <input type="checkbox" name="social-share-linkedin" value="1" <?php checked(1, get_option('social-share-linkedin'), true); ?> /> Check for Yes
    <?php
 }
 function social_share_pinterest_checkbox()
-{  
+{
    ?>
         <input type="checkbox" name="social-share-pinterest" value="1" <?php checked(1, get_option('social-share-pinterest'), true); ?> /> Check for Yes
    <?php
 }
 function social_share_googleplus_checkbox()
-{  
+{
    ?>
         <input type="checkbox" name="social-share-googleplus" value="1" <?php checked(1, get_option('social-share-googleplus'), true); ?> /> Check for Yes
    <?php
 }
- 
+
 add_action("admin_init", "social_share_settings");
 add_action("admin_menu", "social_share_menu_item");
 function add_social_share_icons($content)
@@ -415,8 +415,8 @@ function add_social_share_icons($content)
     $url = esc_url($url);
     $media = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
     $title = get_the_title($post->ID);
-    
-    
+
+
     if(get_option("social-share-facebook") == 1)
     {
         $html = $html . "<li class='mdl-menu__item facebook'><a target='_blank' href='http://www.facebook.com/sharer.php?u=" . $url . "'>Facebook</a></li>";
@@ -429,12 +429,12 @@ function add_social_share_icons($content)
     {
         $html = $html . "<li class='mdl-menu__item linkedin'><a target='_blank' href='http://www.linkedin.com/shareArticle?url=" . $url . "'>LinkedIn</a></li>";
     }
-    
+
     if(get_option("social-share-pinterest") == 1)
     {
         $html = $html . "<li class='mdl-menu__item pinterest'><a target='_blank' href='http://pinterest.com/pin/create/button/?url=" . $url . "&media=".$media."&description=".$title."'>Pinterest</a></li>";
     }
-    
+
     if(get_option("social-share-googleplus") == 1)
     {
         $html = $html . "<li class='mdl-menu__item googleplus'><a target='_blank' href='https://plus.google.com/share?url=" . $url . "' onclick='javascript:window.open(this.href,
