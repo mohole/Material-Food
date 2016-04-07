@@ -7,6 +7,7 @@
 	<meta property="og:title" content="<?php $title = get_the_title($post->ID); echo $title; ?>" />
 	<meta property="og:image" content="<?php $media = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); echo $media; ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 
