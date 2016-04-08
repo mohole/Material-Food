@@ -8,7 +8,7 @@ Description: Tema per blogging ispirato al tema food, basato su Material Design 
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: grigio, scuro, bianco, layout responsive, due colonne, tre colonne, barra laterale sinistra, barra laterale destra, immagine personalizzata della testata, menu personalizzato, immagini in evidenza
+Tags: gray, dark, white, layout responsive, two columns, three columns, left sidebar, right sidebar,custom header image, custom menu, post thumbnails
 */
 body {
   background-color: #666666;
@@ -598,3 +598,25 @@ button.search i {
     height: 200px;
   }
 }
+/* WordPress required classes*/
+.wp-caption,.wp-caption-text{
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    margin: 2px 0;
+    text-align: center;
+    max-width: 100%;}
+.sticky{}
+.gallery-caption{}
+.bypostauthor{}
+  .alignleft {
+  	float: left;
+  }
+  .alignright {
+  	float: right;
+  }
+  .aligncenter {
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  }

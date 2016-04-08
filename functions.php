@@ -331,6 +331,14 @@ function themeslug_theme_customizer( $wp_customize ) {
     'section'  => 'themeslug_logo_section',
     'settings' => 'themeslug_logo',
 ) ) );
+/*FRA*/
+/* Add Site Logo
+$wp_customize->add_setting('wphs_logo',
+	array( 'default' => '',
+	'sanitize_callback' => 'esc_url_raw',
+	'type' => 'theme_mod',
+));
+*/
 }
 add_action( 'customize_register', 'themeslug_theme_customizer' );
 
