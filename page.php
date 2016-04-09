@@ -9,6 +9,7 @@
             </div>
             <div class="mdl-card__supporting-text">
                 <?php the_content(); ?>
+                <?php wp_link_pages(); ?>
             </div>
             <div class="mdl-card__supporting-text">
               <?php  if ( comments_open() || get_comments_number() ) {

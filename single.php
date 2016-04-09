@@ -1,4 +1,4 @@
-<?php get_header(); ?>  
+<?php get_header(); ?>
 <!-- single.php -->
 <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--8-col mdl-cell--6-col-tablet">
@@ -30,6 +30,7 @@
             </div>
             <div class="mdl-card__supporting-text">
                 <?php the_content(); ?>
+                <?php wp_link_pages(); ?>
             </div>
             <div class="mdl-card__supporting-text">
               <?php  if ( comments_open() || get_comments_number() ) {
@@ -46,12 +47,12 @@
                 Nessun contenuto trovato!
             </div>
             <?php endif; ?>
-            
+
             <div class="mdl-grid prevnext">
                 <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone"><?php previous_post_link(); ?></div>
                 <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone"><?php next_post_link(); ?></div>
             </div>
-            
+
         </div>
     </div>
     <?php get_sidebar('right'); ?>
