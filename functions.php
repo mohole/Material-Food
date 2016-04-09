@@ -33,7 +33,7 @@ function temaSetup(){
         'caption'
     ) );
 
-    //abilitare i formati nel tema
+    /*da abilitare i formati nel tema
     add_theme_support( 'post-formats', array(
 		'aside',
 		'image',
@@ -45,8 +45,9 @@ function temaSetup(){
 		'audio',
 		'chat',
 	) );
+  */
 }
-add_action('after_setup_theme', 'temaSetup');
+add_action('after_setup_theme', 'mfood_Setup');
 
 function creaMenu(){
     register_nav_menus( array(
