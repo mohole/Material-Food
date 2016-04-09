@@ -119,7 +119,7 @@ function caricaScript(){
         '2.0.0',
         true
     );
-    //definisco fancybox js
+    //definisco lightbox js
     wp_register_script(
         'lightboxJS',
         get_template_directory_uri() . '/js/lightbox.js',
@@ -144,7 +144,7 @@ function caricaScript(){
         '2.0.0',
         'all'
     );
-    //definisco fancybox.css
+    //definisco lightbox.css
     wp_register_style(
         'lightboxCSS',
         get_template_directory_uri() . '/css/lightbox.css',
@@ -317,30 +317,32 @@ function registraWidget(){
 add_action('widgets_init','registraWidget');
 
 //Custom logo
-function themeslug_theme_customizer( $wp_customize ) {
-   $wp_customize->add_section( 'themeslug_logo_section' , array(
-    'title'       => __( 'Logo', 'themeslug' ),
+function mfood_theme_customizer( $wp_customize ) {
+   $wp_customize->add_section( 'mfood_logo_section' , array(
+    'title'       => __( 'Logo', 'mfood' ),
     'priority'    => 30,
     'description' => '
    Caricamento di un logo, in sostituzione del nome sito / descrizione in testata',
 ) );
 
-    $wp_customize->add_setting( 'themeslug_logo' );
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_logo', array(
-    'label'    => __( 'Logo', 'themeslug' ),
-    'section'  => 'themeslug_logo_section',
-    'settings' => 'themeslug_logo',
-) ) );
-/*FRA*/
-/* Add Site Logo
-$wp_customize->add_setting('wphs_logo',
-	array( 'default' => '',
-	'sanitize_callback' => 'esc_url_raw',
-	'type' => 'theme_mod',
-));
-*/
+    $wp_customize->add_setting( 'mfood_logo' );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'mfood_logo', array(
+    'label'    => __( 'Logo', 'mfood' ),
+    'section'  => 'mfood_logo_section',
+    'settings' => 'mfood_logo',
+    'sanitize_callback' => 'esc_url_raw',
+  	'type' => 'theme_mod',
+)));
+
 }
-add_action( 'customize_register', 'themeslug_theme_customizer' );
+add_action( 'customize_register', 'mfood_theme_customizer' );
+
+/*
+function add_theme_page( $page_title, $menu_title, $capability, $menu_slug, $function = '' ) {
+    return add_submenu_page( 'themes.php', $page_title, $menu_title, $capability, $menu_slug, $function );
+}
+
+*/
 
 //Social share
 function social_share_menu_item()
@@ -351,7 +353,7 @@ function social_share_page()
 {
    ?>
       <div class="wrap">
-         <h1>Social Sharing Options</h1>
+         <h1>Opzioni Condivisione Social</h1>
 
          <form method="post" action="options.php">
             <?php
@@ -369,11 +371,11 @@ function social_share_settings()
 {
     add_settings_section("social_share_config_section", "", null, "social-share");
 
-    add_settings_field("social-share-facebook", "Do you want to display Facebook share button?", "social_share_facebook_checkbox", "social-share", "social_share_config_section");
-    add_settings_field("social-share-twitter", "Do you want to display Twitter share button?", "social_share_twitter_checkbox", "social-share", "social_share_config_section");
-    add_settings_field("social-share-linkedin", "Do you want to display LinkedIn share button?", "social_share_linkedin_checkbox", "social-share", "social_share_config_section");
-    add_settings_field("social-share-pinterest", "Do you want to display Pinterest share button?", "social_share_pinterest_checkbox", "social-share", "social_share_config_section");
-    add_settings_field("social-share-googleplus", "Do you want to display Google+ share button?", "social_share_googleplus_checkbox", "social-share", "social_share_config_section");
+    add_settings_field("social-share-facebook", "Attivare pulsante condivisione Facebook?", "social_share_facebook_checkbox", "social-share", "social_share_config_section");
+    add_settings_field("social-share-twitter", "Attivare pulsante condivisione Twitter?", "social_share_twitter_checkbox", "social-share", "social_share_config_section");
+    add_settings_field("social-share-linkedin", "Attivare pulsante condivisione LinkedIn?", "social_share_linkedin_checkbox", "social-share", "social_share_config_section");
+    add_settings_field("social-share-pinterest", "Attivare pulsante condivisione Pinterest?", "social_share_pinterest_checkbox", "social-share", "social_share_config_section");
+    add_settings_field("social-share-googleplus", "Attivare pulsante condivisione Google+?", "social_share_googleplus_checkbox", "social-share", "social_share_config_section");
 
     register_setting("social_share_config_section", "social-share-facebook");
     register_setting("social_share_config_section", "social-share-twitter");
@@ -385,25 +387,25 @@ function social_share_settings()
 function social_share_facebook_checkbox()
 {
    ?>
-        <input type="checkbox" name="social-share-facebook" value="1" <?php checked(1, get_option('social-share-facebook'), true); ?> /> Check for Yes
+        <input type="checkbox" name="social-share-facebook" value="1" <?php checked(1, get_option('social-share-facebook'), true); ?> /> Attiva
    <?php
 }
 function social_share_twitter_checkbox()
 {
    ?>
-        <input type="checkbox" name="social-share-twitter" value="1" <?php checked(1, get_option('social-share-twitter'), true); ?> /> Check for Yes
+        <input type="checkbox" name="social-share-twitter" value="1" <?php checked(1, get_option('social-share-twitter'), true); ?> /> Attiva
    <?php
 }
 function social_share_linkedin_checkbox()
 {
    ?>
-        <input type="checkbox" name="social-share-linkedin" value="1" <?php checked(1, get_option('social-share-linkedin'), true); ?> /> Check for Yes
+        <input type="checkbox" name="social-share-linkedin" value="1" <?php checked(1, get_option('social-share-linkedin'), true); ?> /> Attiva
    <?php
 }
 function social_share_pinterest_checkbox()
 {
    ?>
-        <input type="checkbox" name="social-share-pinterest" value="1" <?php checked(1, get_option('social-share-pinterest'), true); ?> /> Check for Yes
+        <input type="checkbox" name="social-share-pinterest" value="1" <?php checked(1, get_option('social-share-pinterest'), true); ?> /> Attiva
    <?php
 }
 function social_share_googleplus_checkbox()
