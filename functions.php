@@ -47,7 +47,7 @@ function temaSetup(){
 	) );
   */
 }
-add_action('after_setup_theme', 'mfood_Setup');
+add_action('after_setup_theme', 'temaSetup');
 
 function creaMenu(){
     register_nav_menus( array(
@@ -338,122 +338,5 @@ function mfood_theme_customizer( $wp_customize ) {
 }
 add_action( 'customize_register', 'mfood_theme_customizer' );
 
-/*
-function add_theme_page( $page_title, $menu_title, $capability, $menu_slug, $function = '' ) {
-    return add_submenu_page( 'themes.php', $page_title, $menu_title, $capability, $menu_slug, $function );
-}
-
-*/
-
-//Social share
-function social_share_menu_item()
-{
-  add_submenu_page("options-general.php", "Social Share", "Social Share", "manage_options", "social-share", "social_share_page");
-}
-function social_share_page()
-{
-   ?>
-      <div class="wrap">
-         <h1>Opzioni Condivisione Social</h1>
-
-         <form method="post" action="options.php">
-            <?php
-               settings_fields("social_share_config_section");
-
-               do_settings_sections("social-share");
-
-               submit_button();
-            ?>
-         </form>
-      </div>
-   <?php
-}
-function social_share_settings()
-{
-    add_settings_section("social_share_config_section", "", null, "social-share");
-
-    add_settings_field("social-share-facebook", "Attivare pulsante condivisione Facebook?", "social_share_facebook_checkbox", "social-share", "social_share_config_section");
-    add_settings_field("social-share-twitter", "Attivare pulsante condivisione Twitter?", "social_share_twitter_checkbox", "social-share", "social_share_config_section");
-    add_settings_field("social-share-linkedin", "Attivare pulsante condivisione LinkedIn?", "social_share_linkedin_checkbox", "social-share", "social_share_config_section");
-    add_settings_field("social-share-pinterest", "Attivare pulsante condivisione Pinterest?", "social_share_pinterest_checkbox", "social-share", "social_share_config_section");
-    add_settings_field("social-share-googleplus", "Attivare pulsante condivisione Google+?", "social_share_googleplus_checkbox", "social-share", "social_share_config_section");
-
-    register_setting("social_share_config_section", "social-share-facebook");
-    register_setting("social_share_config_section", "social-share-twitter");
-    register_setting("social_share_config_section", "social-share-linkedin");
-    register_setting("social_share_config_section", "social-share-pinterest");
-    register_setting("social_share_config_section", "social-share-googleplus");
-}
-
-function social_share_facebook_checkbox()
-{
-   ?>
-        <input type="checkbox" name="social-share-facebook" value="1" <?php checked(1, get_option('social-share-facebook'), true); ?> /> Attiva
-   <?php
-}
-function social_share_twitter_checkbox()
-{
-   ?>
-        <input type="checkbox" name="social-share-twitter" value="1" <?php checked(1, get_option('social-share-twitter'), true); ?> /> Attiva
-   <?php
-}
-function social_share_linkedin_checkbox()
-{
-   ?>
-        <input type="checkbox" name="social-share-linkedin" value="1" <?php checked(1, get_option('social-share-linkedin'), true); ?> /> Attiva
-   <?php
-}
-function social_share_pinterest_checkbox()
-{
-   ?>
-        <input type="checkbox" name="social-share-pinterest" value="1" <?php checked(1, get_option('social-share-pinterest'), true); ?> /> Attiva
-   <?php
-}
-function social_share_googleplus_checkbox()
-{
-   ?>
-        <input type="checkbox" name="social-share-googleplus" value="1" <?php checked(1, get_option('social-share-googleplus'), true); ?> /> Check for Yes
-   <?php
-}
-
-add_action("admin_init", "social_share_settings");
-add_action("admin_menu", "social_share_menu_item");
-function add_social_share_icons($content)
-{
-    $html = "<ul class='mdl-menu mdl-js-menu mdl-menu--bottom-right' for='menu-speed'>";
-    global $post;
-    $url = get_permalink($post->ID);
-    $url = esc_url($url);
-    $media = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-    $title = get_the_title($post->ID);
-
-
-    if(get_option("social-share-facebook") == 1)
-    {
-        $html = $html . "<li class='mdl-menu__item facebook'><a target='_blank' href='http://www.facebook.com/sharer.php?u=" . $url . "'>Facebook</a></li>";
-    }
-    if(get_option("social-share-twitter") == 1)
-    {
-        $html = $html . "<li class='mdl-menu__item twitter'><a target='_blank' href='https://twitter.com/share?url=" . $url . "'>Twitter</a></li>";
-    }
-    if(get_option("social-share-linkedin") == 1)
-    {
-        $html = $html . "<li class='mdl-menu__item linkedin'><a target='_blank' href='http://www.linkedin.com/shareArticle?url=" . $url . "'>LinkedIn</a></li>";
-    }
-
-    if(get_option("social-share-pinterest") == 1)
-    {
-        $html = $html . "<li class='mdl-menu__item pinterest'><a target='_blank' href='http://pinterest.com/pin/create/button/?url=" . $url . "&media=".$media."&description=".$title."'>Pinterest</a></li>";
-    }
-
-    if(get_option("social-share-googleplus") == 1)
-    {
-        $html = $html . "<li class='mdl-menu__item googleplus'><a target='_blank' href='https://plus.google.com/share?url=" . $url . "' onclick='javascript:window.open(this.href,
-  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600'); return false;'>Google+</a></li>";
-    }
-    $html = $html."</ul>";
-    return $content = $content.$html;
-}
-add_filter("the_content", "add_social_share_icons");
 
 ?>
