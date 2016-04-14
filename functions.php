@@ -173,7 +173,7 @@ add_action( 'init' , 'aggiungiCategorieImmagini' );
 
 //lunghezza excerpt
 function new_excerpt_length($length) {
-	return 20;
+	return 40;
 }
 add_filter('excerpt_length', 'new_excerpt_length');
 
