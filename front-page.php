@@ -24,11 +24,9 @@
                             <?php the_tags('<li>',', ','</li>') ?>
                         </ul>
                     </div>
-                    <?php if ( has_excerpt() ) { ?>
                     <div class="mdl-card__supporting-text excerpt">
                         <?php the_excerpt();?>
                     </div>
-                    <?php } ?>
                     <div class="mdl-card__actions mdl-card--border">
                         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="<?php the_permalink(); ?>">
                         Continua a leggere
