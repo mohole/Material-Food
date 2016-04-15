@@ -1,16 +1,7 @@
-=== Twenty Fourteen ===
-Contributors: the WordPress team
-Requires at least: WordPress 3.6
-Tested up to: WordPress 4.5-trunk
-Stable tag: 1.6
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: black, green, white, light, dark, two-columns, three-columns, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready, accessibility-ready
-
 === Material Food ===
 Theme URI: http://www.mohole.it/web/food
 Contributors: Livio Bollini, Alessia Monaco, Alessandra Turolla, Francesco Riggio
-Description: Tema per blogging ispirato al tema food, basato su Material Design Lite
+Description: WordPress theme, based on Material Design Lite
 Version: 1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,7 +37,7 @@ GNU General Public License for more details.
 
 
 Material Food Theme bundles the following third-party resources:
-Lightbox2 is Created by Lokesh Dhakar
+Lightbox2 is created by Lokesh Dhakar
 http://lokeshdhakar.com/projects/lightbox2/
 Lightbox2 is licensed under The MIT License.
 100% Free. Lightbox is free to use in both commercial and non-commercial work.
