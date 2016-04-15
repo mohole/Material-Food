@@ -324,18 +324,25 @@ function mfood_theme_customizer( $wp_customize ) {
     'priority'    => 30,
     'description' => '
    Caricamento di un logo, in sostituzione del nome sito / descrizione in testata',
-) );
+));
 
-    $wp_customize->add_setting( 'mfood_logo' );
+    $wp_customize->add_setting( 'mfood_logo', array(
+    'sanitize_callback' => 'mfood_logo_layout',
+    ) );
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'mfood_logo', array(
     'label'    => __( 'Logo', 'mfood' ),
     'section'  => 'mfood_logo_section',
     'settings' => 'mfood_logo',
-    'sanitize_callback' => 'esc_url_raw',
   	'type' => 'theme_mod',
 )));
 
-}
+function mfood_logo_layout( $value ) {
+    if ( ! in_array( $value, array( ) ) )
+        $value = 'Logo';
+
+    return $value;
+        }
+    }
 add_action( 'customize_register', 'mfood_theme_customizer' );
 
 
