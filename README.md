@@ -11,3 +11,4 @@ Alessandra Turolla</br>
 Francesco Riggio
 <hr>
 <p>The theme has passed the automated check, and is now under review by the WordPress Team, to be included in the official WordPress Theme Directory, for direct installing from WordPress dashboard. Stay tuned!</p>
+<p>This mean that the theme fullfill all the REQUIRED features request by WordPress! Download and enjoy!</p>
