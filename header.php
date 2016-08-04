@@ -1,5 +1,5 @@
-<!doctype html <?php language_attributes(); ?>>
-<html lang="it">
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
 <head>
     <meta charset="UTF-8">
     <title><?php wp_title(); ?></title>
