@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
     <title><?php wp_title(); ?></title>
 	<meta property="og:url" content="<?php $url = get_permalink($post->ID); echo $url; ?>" />
 	<meta property="og:title" content="<?php $title = get_the_title($post->ID); echo $title; ?>" />
