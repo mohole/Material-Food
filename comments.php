@@ -5,8 +5,8 @@
  * The area of the page that contains comments and the comment form.
  *
  * @package WordPress
- * @subpackage material_food
- * @since material_food 1.0
+ * @subpackage materialfood
+ * @since materialfood 1.0
  */
 /*
  * If the current post is protected by a password and the visitor has not yet
@@ -20,15 +20,15 @@ if ( post_password_required() ) {
 	<?php if ( have_comments() ) : ?>
 	<h2 class="comments-title">
 		<?php
-			printf( _n( 'Un commento su &ldquo;%2$s&rdquo;', '%1$s commenti su &ldquo;%2$s&rdquo;', get_comments_number(), 'material_food' ),
+			printf( _n( 'Un commento su &ldquo;%2$s&rdquo;', '%1$s commenti su &ldquo;%2$s&rdquo;', get_comments_number(), 'materialfood' ),
 				number_format_i18n( get_comments_number() ), get_the_title() );
 		?>
 	</h2>
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 	<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'material_food' ); ?></h1>
-		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'material_food' ) ); ?></div>
-		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'material_food' ) ); ?></div>
+		<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'materialfood' ); ?></h1>
+		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'materialfood' ) ); ?></div>
+		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'materialfood' ) ); ?></div>
 	</nav><!-- #comment-nav-above -->
 	<?php endif; // Check for comment navigation. ?>
 	<ol class="comment-list">
@@ -42,13 +42,13 @@ if ( post_password_required() ) {
 	</ol><!-- .comment-list -->
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 	<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'material_food' ); ?></h1>
-		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'material_food' ) ); ?></div>
-		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'material_food' ) ); ?></div>
+		<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'materialfood' ); ?></h1>
+		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'materialfood' ) ); ?></div>
+		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'materialfood' ) ); ?></div>
 	</nav><!-- #comment-nav-below -->
 	<?php endif; // Check for comment navigation. ?>
 	<?php if ( ! comments_open() ) : ?>
-	<p class="no-comments"><?php _e( 'I commenti sono chiusi.', 'material_food' ); ?></p>
+	<p class="no-comments"><?php _e( 'I commenti sono chiusi.', 'materialfood' ); ?></p>
 	<?php endif; ?>
 	<?php endif; // have_comments() ?>
 	<?php comment_form(); ?>

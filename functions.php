@@ -33,19 +33,6 @@ function temaSetup(){
         'caption'
     ) );
 
-    /*da abilitare i formati nel tema
-    add_theme_support( 'post-formats', array(
-		'aside',
-		'image',
-		'video',
-		'quote',
-		'link',
-		'gallery',
-		'status',
-		'audio',
-		'chat',
-	) );
-  */
 }
 add_action('after_setup_theme', 'temaSetup');
 
@@ -102,16 +89,6 @@ function areaWidget(){
 add_action("widgets_init","areaWidget");
 
 function caricaScript(){
-    //Dimentica la versione attualmente registrata di Jquery
-    wp_deregister_script("jquery");
-    //definisco Jquery
-    wp_register_script(
-        'jquery',
-        get_template_directory_uri() . '/js/jquery-2.1.4.js',
-        false,
-        '2.1.4',
-        true
-    );
     //definisco material.js
     wp_register_script(
         'materialJS',
@@ -190,7 +167,7 @@ class UltimiPostCategorizzati extends WP_Widget
     {
         //costruttore di classe
         //parametri: il nome unico del widget, il titolo, array associativo con altre opzioni
-        parent::__construct('cat-posts', __('Ultimi Post Categorizzati','catposts'), array('classname' => 'cat-post-widget', 'description' => __('Post pi&#249; recenti divisi per categoria','catposts')));
+        parent::__construct('cat-posts', __('Ultimi Post Categorizzati','materialfood'), array('classname' => 'cat-post-widget', 'description' => __('Post pi&#249; recenti divisi per categoria','materialfood')));
     }
 
     //funzione per definire come visualizzare il form nella configurazione del widget da backend
@@ -213,14 +190,14 @@ class UltimiPostCategorizzati extends WP_Widget
         <!-- input text per il titolo -->
         <p>
             <label for="<?php echo $this->get_field_id("title"); ?>">
-                <?php _e( 'Titolo','catposts' ); ?>:
+                <?php _e( 'Titolo','materialfood' ); ?>:
                 <input class="widefat" style="width:80%;" id="<?php echo $this->get_field_id("title"); ?>" name="<?php echo $this->get_field_name("title"); ?>" type="text" value="<?php echo esc_attr($instance["title"]); ?>" />
             </label>
         </p>
         <!-- select per scegliere la categoria di post -->
         <p>
             <label>
-                <?php _e( 'Categoria','catposts' ); ?>:
+                <?php _e( 'Categoria','materialfood' ); ?>:
                 <?php wp_dropdown_categories( array( 'hide_empty'=> 0, 'name' => $this->get_field_name("cat"), 'selected' => $instance["cat"] ) ); ?>
             </label>
         </p>
@@ -228,13 +205,13 @@ class UltimiPostCategorizzati extends WP_Widget
         <p>
             <label for="<?php echo $this->get_field_id("hide_if_empty"); ?>">
                 <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("hide_if_empty"); ?>" name="<?php echo $this->get_field_name("hide_if_empty"); ?>"<?php checked( (bool) $instance["hide_if_empty"], true ); ?> />
-                <?php _e( 'Nascondi se la categoria non ha post','catposts' ); ?>
+                <?php _e( 'Nascondi se la categoria non ha post','materialfood' ); ?>
             </label>
         </p>
         <!-- input nascosto per il numero di post da mostrare -->
         <p style="display:none;">
             <label for="<?php echo $this->get_field_id("num"); ?>">
-                <?php _e('Number of posts to show','catposts'); ?>:
+                <?php _e('Number of posts to show','materialfood'); ?>:
                 <input style="text-align: center; width: 30%;" id="<?php echo $this->get_field_id("num"); ?>" name="<?php echo $this->get_field_name("num"); ?>" type="number" min="0" value="<?php echo absint($instance["num"]); ?>" />
             </label>
         </p>
@@ -318,32 +295,32 @@ function registraWidget(){
 add_action('widgets_init','registraWidget');
 
 //Custom logo
-function mfood_theme_customizer( $wp_customize ) {
-   $wp_customize->add_section( 'mfood_logo_section' , array(
-    'title'       => __( 'Logo', 'mfood' ),
+function materialfood_theme_customizer( $wp_customize ) {
+   $wp_customize->add_section( 'materialfood_logo_section' , array(
+    'title'       => __( 'Logo', 'materialfood' ),
     'priority'    => 30,
     'description' => '
    Caricamento di un logo, in sostituzione del nome sito / descrizione in testata',
 ));
 
-    $wp_customize->add_setting( 'mfood_logo', array(
-    'sanitize_callback' => 'mfood_logo_layout',
+    $wp_customize->add_setting( 'materialfood_logo', array(
+    'sanitize_callback' => 'materialfood_logo_layout',
     ) );
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'mfood_logo', array(
-    'label'    => __( 'Logo', 'mfood' ),
-    'section'  => 'mfood_logo_section',
-    'settings' => 'mfood_logo',
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'materialfood_logo', array(
+    'label'    => __( 'Logo', 'materialfood' ),
+    'section'  => 'materialfood_logo_section',
+    'settings' => 'materialfood_logo',
   	'type' => 'theme_mod',
 )));
 
-function mfood_logo_layout( $value ) {
+function materialfood_logo_layout( $value ) {
     if ( ! in_array( $value, array( ) ) )
         $value = 'Logo';
 
     return $value;
         }
     }
-add_action( 'customize_register', 'mfood_theme_customizer' );
+add_action( 'customize_register', 'materialfood_theme_customizer' );
 
 
 ?>
