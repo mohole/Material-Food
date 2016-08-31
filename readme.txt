@@ -2,7 +2,7 @@
 Theme URI: http://www.mohole.it/web/food
 Contributors: Livio Bollini, Alessia Monaco, Alessandra Turolla, Francesco Riggio
 Description: WordPress theme, based on Material Design Lite
-Version: 1.2
+Version: 1.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: gray, dark, white, responsive-layout, two-columns, three-columns, left-sidebar, right-sidebar,custom-header, custom-menu
