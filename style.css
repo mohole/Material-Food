@@ -1,7 +1,7 @@
 /*
 Theme Name: Material Food
 Theme URI: http://www.mohole.it/web/food
-Author: Livio Bollini, Alessia Monaco, Alessandra Turolla
+Author: Livio Bollini, Alessia Monaco, Alessandra Turolla, Francesco Riggio
 Author URI: http://www.mohole.it
 Description: Theme inspired for blogging food,based on Material Design Lite
 Version: 1.3
@@ -573,4 +573,25 @@ textarea:focus {
   .single .mdl-card__title {
     height: 200px;
   }
+}
+/* WordPress required classes*/
+.wp-caption,
+.wp-caption-text {
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 300;
+  margin: 2px 0;
+  text-align: center;
+  max-width: 100%;
+}
+.alignleft {
+  float: left;
+}
+.alignright {
+  float: right;
+}
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
